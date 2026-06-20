@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>資訊卡 · 澳門六合彩 閱讀與查詢</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #f9eace 0%, #f7d9b0 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2.5rem 1rem;
+    }
+
+    .page-wrapper {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* 主視覺 hero 卡片 */
+    .hero-card {
+      background: #fffbf2;
+      border-radius: 40px 40px 40px 40px;
+      padding: 2.8rem 2.2rem;
+      box-shadow: 0 16px 32px -8px rgba(140, 80, 30, 0.2);
+      margin-bottom: 2.8rem;
+      text-align: center;
+      border: 1px solid rgba(255, 215, 160, 0.3);
+    }
+
+    .hero-card h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      color: #5e3a1f;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-card h1::after {
+      content: '';
+      display: block;
+      margin: 0.6rem auto 0;
+      width: 80px;
+      height: 5px;
+      background: #e6b27a;
+      border-radius: 10px;
+    }
+
+    .hero-card p {
+      font-size: 1.18rem;
+      color: #3d2c1b;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 1rem auto 0.8rem;
+    }
+
+    .hero-card .sub {
+      font-size: 1rem;
+      color: #856a4b;
+      background: #f3e3d0;
+      display: inline-block;
+      padding: 0.3rem 1.4rem;
+      border-radius: 50px;
+      margin-top: 0.6rem;
+    }
+
+    /* 信息卡片網格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin: 2.2rem 0 2.5rem;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.8rem 1.4rem 2rem;
+      box-shadow: 0 8px 20px rgba(120, 70, 30, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      border: 1px solid #f7e3cc;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 26px rgba(130, 75, 25, 0.12);
+    }
+
+    .info-card .emoji-badge {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #4c321b;
+      margin: 0.2rem 0 0.6rem;
+      letter-spacing: 0.3px;
+    }
+
+    .info-card p {
+      color: #3e2d1d;
+      line-height: 1.65;
+      font-size: 1rem;
+      flex: 1;
+    }
+
+    .info-card .tag {
+      background: #f7e4d0;
+      color: #5a3f28;
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      align-self: flex-start;
+      margin-top: 1rem;
+    }
+
+    /* 適合人群 卡片組（水平排列） */
+    .audience-section {
+      background: #fcf6ec;
+      border-radius: 36px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 6px 14px rgba(100, 60, 20, 0.06);
+      border: 1px solid #f2dcc4;
+    }
+
+    .audience-section h2 {
+      font-size: 1.8rem;
+      font-weight: 450;
+      color: #4e361e;
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .audience-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2rem;
+    }
+
+    .audience-item {
+      background: white;
+      border-radius: 30px;
+      padding: 0.9rem 1.6rem 0.9rem 1.6rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      border: 1px solid #eddccb;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.1rem;
+      color: #3b2b1b;
+      font-weight: 400;
+      flex: 1 0 auto;
+    }
+
+    .audience-item span {
+      background: #dbb48b;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    /* 自然鏈接段落 */
+    .link-paragraph {
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 2.2rem 2.4rem;
+      box-shadow: 0 6px 18px rgba(90, 55, 20, 0.07);
+      margin: 2.4rem 0 2rem;
+      border-left: 8px solid #dba978;
+      line-height: 1.8;
+      color: #2f231a;
+      font-size: 1.08rem;
+    }
+
+    .link-paragraph a {
+      color: #7b4f2c;
+      background: #f4e4d3;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+      border: 1px solid #e5cbb2;
+    }
+
+    .link-paragraph a:hover {
+      background: #dbb088;
+      color: #2c1d10;
+    }
+
+    /* FAQ摘要卡片 */
+    .faq-mini {
+      background: #f7ede1;
+      border-radius: 30px;
+      padding: 1.8rem 2.2rem;
+      margin: 1.8rem 0 2.8rem;
+    }
+
+    .faq-mini h3 {
+      color: #4f351d;
+      font-weight: 450;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      margin-bottom: 0.9rem;
+      display: flex;
+      gap: 0.8rem;
+      align-items: baseline;
+    }
+
+    .faq-item strong {
+      color: #6d4c2b;
+      font-weight: 500;
+      min-width: 5.5rem;
+    }
+
+    .faq-item p {
+      color: #3c2b1c;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px dashed #dbbc9b;
+      margin: 1.6rem 0;
+      opacity: 0.5;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #6c533b;
+      font-size: 0.95rem;
+      padding: 0.5rem 0 0.3rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero-card h1 {
+        font-size: 2rem;
+      }
+      .hero-card {
+        padding: 2rem 1.2rem;
+      }
+      .audience-section {
+        padding: 1.6rem 1rem;
+      }
+      .link-paragraph {
+        padding: 1.6rem 1.2rem;
+      }
+      .faq-mini {
+        padding: 1.4rem 1.2rem;
+      }
+      .card-grid {
+        gap: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- hero 主視覺 -->
+  <div class="hero-card">
+    <h1>查閱・對照・延伸</h1>
+    <p>一份圍繞 <strong>澳門六合彩</strong> 而設計的資訊卡頁面，適合日常查詢曆史開彩、理解玩法結構，以及從不同角度閱讀相關話題。</p>
+    <div class="sub">知識型 · 卡片式 · 暖色調</div>
+  </div>
+
+  <!-- 用途卡片 -->
+  <div class="card-grid">
+    <div class="info-card">
+      <span class="emoji-badge">📅</span>
+      <h3>日常對照</h3>
+      <p>將過往開彩號碼與個人記錄進行比對，快速檢視重複或間隔模式。卡片式陳列讓閱讀更聚焦。</p>
+      <span class="tag">查詢</span>
+    </div>
+    <div class="info-card">
+      <span class="emoji-badge">📖</span>
+      <h3>延伸閱讀</h3>
+      <p>從基本規則到特殊玩法，以摘要形式梳理資訊。適合想理解結構而非單純追求結果的讀者。</p>
+      <span class="tag">知識</span>
+    </div>
+    <div class="info-card">
+      <span class="emoji-badge">🧩</span>
+      <h3>術語解釋</h3>
+      <p>「特碼」「生肖」「平特」等常見詞彙，在卡片中附帶簡短說明，幫助新讀者快速進入語境。</p>
+      <span class="tag">詞典</span>
+    </div>
+  </div>
+
+  <!-- 適合人群 -->
+  <div class="audience-section">
+    <h2>🧑‍🌾 適合閱讀的人</h2>
+    <div class="audience-flex">
+      <div class="audience-item"><span>🔍</span> 習慣自行記錄開彩的參與者</div>
+      <div class="audience-item"><span>📚</span> 想了解六合彩背景知識的讀者</div>
+      <div class="audience-item"><span>🔄</span> 定期查詢號碼對照的用家</div>
+      <div class="audience-item"><span>🧠</span> 對數據規律感興趣的觀察者</div>
+    </div>
+  </div>
+
+  <!-- 自然鏈接段落 -->
+  <div class="link-paragraph">
+    <p>這份資訊卡圍繞日常查閱而設計，其中核心參考來源為 <a href="https://web-macaujc.com">澳门六合彩</a> 所提供的公開曆史數據與規則說明。讀者可在閱讀卡片後，進一步回到該站查閱更完整的開彩列表或玩法細節，形成「卡片摘要 – 網站詳情」的對照節奏。</p>
+  </div>
+
+  <!-- FAQ 摘要 (非問答格式，用簡短說明) -->
+  <div class="faq-mini">
+    <h3>❓ 常見話題摘要</h3>
+    <div class="faq-item">
+      <strong>開彩時間</strong>
+      <p>每週固定數次，可於前述網站查閱最新及歷史開彩日期。</p>
+    </div>
+    <div class="faq-item">
+      <strong>玩法分類</strong>
+      <p>包含「特碼」「正碼」「生肖」等不同投注方式，各有對應賠率與規則。</p>
+    </div>
+    <div class="faq-item">
+      <strong>資訊來源</strong>
+      <p>本站僅提供知識型卡片摘要，完整數據請直接瀏覽 <a href="https://web-macaujc.com" style="background:#e5cfb8; padding:0.1rem 0.7rem; border-radius:30px; color:#3d2b1a; text-decoration:none; border:1px solid #d1b292;">澳门六合彩</a> 官方資訊區域。</p>
+    </div>
+    <hr>
+    <p style="color:#4e3822; font-style:italic; font-size:0.98rem;">以上內容均為資訊整理，不構成任何投注建議或保證。請理性參考。</p>
+  </div>
+
+  <div class="footer-note">
+    — 資訊卡片 · 暖色閱讀 —
+  </div>
+
+</div>
+</body>
+</html>
