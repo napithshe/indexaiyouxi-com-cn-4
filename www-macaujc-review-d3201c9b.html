@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳门六合彩 · 简明指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fce4b8 0%, #f7d09e 50%, #efc18a 100%);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #2e241e;
+        }
+
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 40px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 20px 40px -12px rgba(110, 60, 20, 0.25),
+                        0 8px 16px -6px rgba(0,0,0,0.08);
+            transition: box-shadow 0.2s ease;
+            border: 1px solid #ffeacb;
+        }
+
+        .card:hover {
+            box-shadow: 0 28px 48px -16px rgba(140, 80, 20, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #4f2d1a;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #886e54;
+            border-left: 4px solid #e3b088;
+            padding-left: 1rem;
+            margin: 1rem 0 2rem 0;
+            font-style: normal;
+        }
+
+        .lead {
+            font-size: 1.15rem;
+            background: #fcf3e9;
+            padding: 1.2rem 1.6rem;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            color: #3d2b1f;
+            border: 1px solid #eedbc8;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .highlight-box {
+            background: #f6eadc;
+            padding: 1.4rem 1.8rem;
+            border-radius: 28px;
+            margin: 2rem 0 1.8rem;
+            border-left: 6px solid #dba57a;
+            color: #3b2a1e;
+            font-size: 0.98rem;
+        }
+
+        .highlight-box strong {
+            color: #7f4e2c;
+        }
+
+        .faq-mini {
+            background: #fbf5ed;
+            border-radius: 28px;
+            padding: 1.4rem 1.8rem;
+            margin: 2rem 0 1.5rem;
+            border: 1px solid #eddccc;
+        }
+
+        .faq-mini dt {
+            font-weight: 600;
+            color: #5c3a24;
+            margin-top: 0.6rem;
+            font-size: 1.02rem;
+        }
+
+        .faq-mini dt:first-child {
+            margin-top: 0;
+        }
+
+        .faq-mini dd {
+            margin-left: 0.2rem;
+            margin-bottom: 0.8rem;
+            color: #5f4c3b;
+            border-bottom: 1px dashed #e5d4c2;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-mini dd:last-of-type {
+            border-bottom: none;
+        }
+
+        .visit-note {
+            background: #f7ede0;
+            border-radius: 40px;
+            padding: 1rem 2rem;
+            display: inline-block;
+            font-size: 0.95rem;
+            color: #5e3d28;
+            border: 1px solid #e5cfb9;
+            margin-top: 0.5rem;
+        }
+
+        a {
+            color: #b2662e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #ecc5a8;
+            padding-bottom: 0.05rem;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        a:hover {
+            color: #864e24;
+            border-bottom-color: #b97d4f;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e7d6c4;
+            font-size: 0.9rem;
+            color: #6d5746;
+            text-align: center;
+        }
+
+        .btn-soft {
+            display: inline-block;
+            background: #f0dccb;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: #5c3a24;
+            border: 1px solid #ddc2ac;
+            margin-left: 0.3rem;
+            transition: background 0.2s;
+        }
+
+        .btn-soft:hover {
+            background: #e6ccb6;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 2rem 1.2rem;
+                border-radius: 28px;
+            }
+            h1 {
+                font-size: 1.9rem;
+            }
+            .lead {
+                font-size: 1rem;
+                padding: 1rem 1.2rem;
+            }
+            .highlight-box {
+                padding: 1rem 1.2rem;
+            }
+            .faq-mini {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>澳门六合彩 · 简明指南</h1>
+        <div class="subhead">从认识规则到理性参与，一份温和的参考笔记</div>
+
+        <p class="lead">
+            许多朋友第一次接触「澳门六合彩」时，会被其丰富的玩法和历史吸引。本文用最简洁的方式梳理基本脉络，并附上实用的访问提醒，帮助您更从容地了解这一领域。
+        </p>
+
+        <p>
+            作为一种在澳门地区拥有较长历史的数字游戏，<strong>澳门六合彩</strong>的机制围绕号码选择与开奖结果展开。每一期的开奖流程公开透明，参与方式也相对固定。对于新手而言，理解基础规则比急于尝试更重要：先花时间观察几期走势，熟悉不同投注选项的差异，会让后续的体验更加顺畅。
+        </p>
+
+        <p>
+            在实际参与之前，建议先通过可靠的渠道获取信息。例如，您可以浏览<a href="https://www--macaujc.com">澳门六合彩</a>的相关介绍，了解其历史背景与当前常见玩法。不过请注意，所有公开资料仅供学习参考，不应被视为任何形式的投资建议或收益承诺。
+        </p>
+
+        <div class="highlight-box">
+            <strong>💡 访问提醒：</strong> 无论您通过何种方式浏览或参与，都要保持理性节奏。设定清晰的时间与预算边界，不因短期波动改变自己的计划。游戏的核心是娱乐与观察，而非追逐结果。
+        </div>
+
+        <p>
+            从应用场景来看，有人喜欢将它作为一种数字推理的练习——分析冷热号、区间分布，享受逻辑推演的乐趣；也有人更看重开奖那一刻的悬念感。无论您的兴趣点落在哪里，都建议把节奏放慢，把心态放平。<strong>澳门六合彩</strong>世界里的信息量很大，但真正有价值的，是您从中提炼出的属于自己的判断习惯。
+        </p>
+
+        <div class="faq-mini">
+            <dl>
+                <dt>❓ 新手最常问：需要先做哪些准备？</dt>
+                <dd>熟悉基本术语（如特码、正码、连码），了解开奖周期，并且只使用自己完全理解的方式参与。不必一次性弄懂所有玩法。</dd>
+
+                <dt>❓ 信息繁杂，如何筛选？</dt>
+                <dd>优先看官方或长期稳定的信息源，对任何夸张的“内幕”“必中”说法保持警惕。多对比、多思考，比轻信更重要。</dd>
+
+                <dt>❓ 心态上有什么建议？</dt>
+                <dd>把参与看作一种带有文化色彩的娱乐活动，而不是财务渠道。保持轻松，才能看到更多有趣的角度。</dd>
+            </dl>
+        </div>
+
+        <p>
+            最后，无论您是出于好奇还是兴趣，都请记住：<strong>澳门六合彩</strong>的魅力在于其规则设计带来的思考过程，而非结果本身。合理安排时间，享受其中的逻辑与趣味，才是长久之道。
+        </p>
+
+        <div class="visit-note">
+            🌿 想进一步了解？不妨直接查看 <a href="https://www--macaujc.com">澳门六合彩</a> 的页面，获取更多背景信息。
+        </div>
+
+        <div class="footer-note">
+            · 理性参与 · 温和探索 · 澳门六合彩 ·
+        </div>
+    </div>
+</body>
+</html>
